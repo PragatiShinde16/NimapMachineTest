@@ -1,0 +1,10 @@
+package com.nimap.task.NimapTask.entity;
+
+import jakarta.persistence.Entity;
+
+@Entity
+public class Category {
+
+	int c_id;
+	String c_name;
+}

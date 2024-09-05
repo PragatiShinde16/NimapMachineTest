@@ -1,0 +1,25 @@
+package com.nimap.task.NimapTask.service;
+
+import java.util.Objects;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.nimap.task.NimapTask.dao.ProductDao;
+import com.nimap.task.NimapTask.entity.Product;
+
+@Service
+public class ProductService {
+
+	@Autowired
+	ProductDao dao;
+	
+	public String addProduct(Product product) {
+		String string = dao.addProduct(product);
+		if (Objects.isNull(string)) {
+			string = "Product is not be added........";
+		}
+		return string;
+	}
+
+}

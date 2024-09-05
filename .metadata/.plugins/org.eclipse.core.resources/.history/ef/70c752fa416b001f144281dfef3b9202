@@ -1,0 +1,23 @@
+package com.nimap.task.NimapTask.controller;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.nimap.task.NimapTask.entity.Product;
+
+@CrossOrigin
+@RestController
+@RequestMapping("api")
+public class ProductController {
+
+//	Create api for insert product
+	
+	@PostMapping("addproduct")
+	public String addEmp(@RequestBody Product product) {
+		String str = service.addEmp(employee);
+		return str;
+	}
+}

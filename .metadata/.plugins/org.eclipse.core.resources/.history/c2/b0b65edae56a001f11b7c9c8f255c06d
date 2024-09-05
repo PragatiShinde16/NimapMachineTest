@@ -1,0 +1,25 @@
+package com.nimap.task.NimapTask.service;
+
+import java.util.Objects;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.nimap.task.NimapTask.dao.CategoryDao;
+import com.nimap.task.NimapTask.entity.Category;
+
+@Service
+public class CategoryService {
+
+	@Autowired
+	CategoryDao dao;
+	
+	public String addCategory(Category category) {
+		String msg = dao.addCategory(category);
+		if (Objects.isNull(msg)) {
+			msg = "Country is not added";
+		}
+		return msg;
+	}
+
+}

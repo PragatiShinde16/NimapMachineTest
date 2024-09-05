@@ -1,0 +1,12 @@
+package com.nimap.task.NimapTask.dao;
+
+import com.nimap.task.NimapTask.entity.Category;
+
+public class CategoryDao {
+
+	public String addCategory(Category category) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

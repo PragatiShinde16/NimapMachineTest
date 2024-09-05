@@ -1,0 +1,18 @@
+package com.nimap.task.NimapTask.service;
+
+import org.springframework.stereotype.Service;
+
+import com.nimap.task.NimapTask.entity.Product;
+
+@Service
+public class ProductService {
+
+	public String addProduct(Product product) {
+		String string = dao.addProduct(product);
+		if (Objects.isNull(string)) {
+			string = "Employee is not be added";
+		}
+		return string;
+	}
+
+}

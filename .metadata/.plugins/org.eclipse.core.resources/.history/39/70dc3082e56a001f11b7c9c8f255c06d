@@ -1,0 +1,19 @@
+package com.nimap.task.NimapTask.controller;
+
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.nimap.task.NimapTask.entity.Category;
+
+@RestController
+@RequestMapping("api")
+public class CategoryController {
+
+	@PostMapping("addcategory")
+	public String addCountry(@RequestBody Category category) {
+		String str = service.addCountry(country);
+		return str;
+	}
+}

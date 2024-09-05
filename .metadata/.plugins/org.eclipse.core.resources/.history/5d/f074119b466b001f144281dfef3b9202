@@ -1,0 +1,125 @@
+package com.nimap.task.NimapTask.dao;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.nimap.task.NimapTask.entity.Product;
+
+@Repository
+public class ProductDao {
+
+	@Autowired
+	SessionFactory factory;
+	
+	public String addProduct(Product product) {
+		Session session = null;
+		Transaction transaction = null;
+		String msg = null;
+		
+		try {
+			session = factory.openSession();
+			transaction = session.beginTransaction();
+			session.persist(product);
+			transaction.commit();
+			msg = "Product Added Successfully......";
+		} catch (Exception e) {
+			// TODO: handle exception
+			if (transaction!=null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}finally {
+			if (session!=null) {
+				session.close();
+			}
+		}
+		return msg;
+	}
+
+	public List<Product> getAllProduct() {
+		Session session = null;
+		Transaction transaction = null;
+		List<Product> list = null;
+		
+		try {
+			session = factory.openSession();
+			transaction = session.beginTransaction();
+			
+			String hqlQuery = "from Product";
+			Query<Product> query = session.createQuery(hqlQuery, Product.class);
+			list = query.list();
+			transaction.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			if (transaction!=null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}finally {
+			if (session!=null) {
+				session.close();
+			}
+		}
+		return list;
+	}
+
+	public Product getParticularProduct(int id) {
+		Session session = null;
+		Transaction transaction = null;
+		Product product = null;
+		
+		try {
+			session = factory.openSession();
+			transaction = session.beginTransaction();
+			product = session.get(Product.class, id);
+			transaction.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			if (transaction!=null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}finally {
+			if (session!=null) {
+				session.close();
+			}
+		}
+		return product;
+	}
+
+	public String updateProduct(Product product, int id) {
+		Session session = null;
+		Transaction transaction = null;
+		String msg = null;
+		
+		try {
+			session = factory.openSession();
+			transaction = session.beginTransaction();
+			Product product2 = session.get(Product.class, id);
+			product2.setP_name(product.getP_name());
+			product2.setP_price(product.getP_price());
+			product2.setP_quantity(product.getP_quantity());
+			session.merge(product2);
+			transaction.commit();
+			msg = "Employee Updated Successfully";
+		} catch (Exception e) {
+			// TODO: handle exception
+			if (transaction!=null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}finally {
+			if (session!=null) {
+				session.close();
+			}
+		}
+		return msg;
+	}
+
+}

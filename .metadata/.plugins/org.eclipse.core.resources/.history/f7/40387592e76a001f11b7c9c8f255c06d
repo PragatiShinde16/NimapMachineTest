@@ -1,0 +1,42 @@
+package com.nimap.task.NimapTask.dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.nimap.task.NimapTask.entity.Category;
+
+@Repository
+public class CategoryDao {
+
+	@Autowired
+	SessionFactory factory;
+	
+	public String addCategory(Category category) {
+		Session session = null;
+		Transaction transaction = null;
+		String msg = null;
+		
+		try {
+			session = factory.openSession();
+			transaction = session.beginTransaction();
+			session.persist(category);
+			transaction.commit();
+			msg = "Category Added Successfully............";
+		} catch (Exception e) {
+			// TODO: handle exception
+			if (transaction!=null) {
+				transaction.rollback();
+			}
+			e.printStackTrace();
+		}finally {
+			if (session!=null) {
+				session.close();
+			}
+		}
+		return msg;
+	}
+
+}

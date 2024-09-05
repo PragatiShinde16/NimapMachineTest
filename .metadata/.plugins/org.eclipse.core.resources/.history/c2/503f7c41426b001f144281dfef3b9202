@@ -1,0 +1,15 @@
+package com.nimap.task.NimapTask.service;
+
+import org.springframework.stereotype.Service;
+
+import com.nimap.task.NimapTask.entity.Product;
+
+@Service
+public class ProductService {
+
+	public String addProduct(Product product) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

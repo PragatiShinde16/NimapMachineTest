@@ -1,0 +1,16 @@
+package com.nimap.task.NimapTask.entity;
+
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+
+public class Product {
+
+	int id;
+	String p_name;
+	Double p_price;
+	int p_quantity;
+	
+	@OneToMany
+	@JoinColumn(name = "c_id")
+	Category category;
+}

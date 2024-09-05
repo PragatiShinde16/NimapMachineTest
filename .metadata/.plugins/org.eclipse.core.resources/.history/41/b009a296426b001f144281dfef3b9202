@@ -1,0 +1,15 @@
+package com.nimap.task.NimapTask.dao;
+
+import org.springframework.stereotype.Repository;
+
+import com.nimap.task.NimapTask.entity.Product;
+
+@Repository
+public class ProductDao {
+
+	public String addProduct(Product product) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
